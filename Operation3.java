@@ -20,11 +20,13 @@ public class Operation3 { // Server 2
 			DataOutputStream dout = new DataOutputStream(out);
 			BufferedOutputStream bout = new BufferedOutputStream(dout);
 			do {
+			 int count = 0;
+			 int counter = 0;
 			 txt=din.readUTF();
 			 System.out.println(txt);	
 			 txt = txt.toLowerCase();
 			 char[] chars = txt.toCharArray();	
-			 int count = 0;
+			 
 			 for (int i = 0; i <txt.length(); i++) {
 				 if (txt.charAt(i) == 'e') {
 						count++;
@@ -33,8 +35,8 @@ public class Operation3 { // Server 2
 			 
 			 System.out.println("Total Number of vowels (e): " + count);
 			 dout.writeInt(count); 
-			 int counter = 0;
-				char ch[] = new char [txt.length()];
+			 
+			 char ch[] = new char [txt.length()];
 				for (int i =0; i < txt.length(); i++) {
 					ch[i]= txt.charAt(i);  
 					 if( ((i>0)&&(ch[i]!=' ')&&(ch[i-1]==' ')) || ((ch[0]!=' ')&&(i==0)) ) { 
@@ -42,11 +44,9 @@ public class Operation3 { // Server 2
 					 }
 				}
 				System.out.println("number of words: " + counter);
-				dout.writeInt(count);
-				dout.flush();
 				
-				dout.writeInt(counter);
-				dout.flush();
+			 dout.writeInt(counter);
+			 dout.flush();
 				
 			}while(true);
 		}catch (Exception e) {
@@ -54,5 +54,4 @@ public class Operation3 { // Server 2
 		}
 		
 	}
-
 }
